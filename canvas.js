@@ -1,5 +1,7 @@
 var c = document.getElementById("slate");
 var ctx= c.getContext("2d");
+ctx.fillStyle = "coral";
+ctx.strokeStyle = "coral";
 
 var clear = document.getElementById("clear");
 var toggle = document.getElementById("toggle");
@@ -7,11 +9,13 @@ var toggle = document.getElementById("toggle");
 var state = "c";
 
 var draw = function(e) {
-    ctx.beginPath();
-    ctx.fillStyle = "coral";
-    
     if( state == "c" ) {
+	ctx.lineTo( e.offsetX, e.offsetY );
+	ctx.moveTo( e.offsetX + 33, e.offsetY );
 	ctx.arc( e.offsetX, e.offsetY, 33, 0, 2*Math.PI );
+	ctx.moveTo( e.offsetX, e.offsetY );
+	
+	ctx.stroke();	
 	ctx.fill();
     } else {
 	ctx.fillRect( e.offsetX, e.offsetY, 66, 66 );
@@ -20,6 +24,8 @@ var draw = function(e) {
 
 var clr = function(e) {
     ctx.clearRect( 0, 0, 500, 500 );
+    
+    ctx.beginPath();
 }
 
 var tgl = function(e) {
