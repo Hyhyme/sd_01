@@ -20,6 +20,7 @@ var draw = function(e) {
     } else {
 	ctx.fillRect( e.offsetX, e.offsetY, 66, 66 );
     }
+    console.log( state );
 }
 
 var clr = function(e) {
@@ -29,11 +30,12 @@ var clr = function(e) {
 }
 
 var tgl = function(e) {
-    if( state = "c" ) {
+    if( state == "c" ) {
 	state = "r";
     } else {
 	state = "c"
     }
+    console.log( state );
 }
 
 c.addEventListener( "click", draw );
